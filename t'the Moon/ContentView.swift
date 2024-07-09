@@ -9,16 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image("duke")
-                .resizable()
-                .scaledToFit()
-                .containerRelativeFrame(.horizontal) { size, axis in
-                        size * 0.8
+        NavigationStack {
+            VStack {
+                List {
+                    ForEach(0..<100) { number in
+                        NavigationLink {
+                            Text("Hey, number \(number)")
+                        } label: {
+                            Text("Number \(number)")
+                        }
                     }
-             
+                }
+                
+            }
+            .padding()
         }
-        .padding()
     }
 }
 
