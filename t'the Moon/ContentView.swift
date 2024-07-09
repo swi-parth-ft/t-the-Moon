@@ -29,22 +29,34 @@ struct ContentView: View {
                             MissionView(mission: mission, astronauts: astronauts)
                         } label: {
                             VStack {
-                                Image(mission.image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 100, height: 100)
-                                    .padding()
-                                VStack {
-                                    Text(mission.displayName)
-                                        .font(.headline)
-                                        .foregroundStyle(.white)
-                                    Text(mission.formattedLaunchDate)
-                                        .font(.caption)
-                                        .foregroundStyle(.gray)
-                                }
-                                .padding(.vertical)
-                                .frame(maxWidth: .infinity)
-                                .background(.lightBackground)
+                                ZStack {
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .fill(.white)
+                                        .opacity(0.4)
+                                        .shadow(radius: 10)
+                              
+                                    
+                                    VStack {
+                                        Image(mission.image)
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 100, height: 100)
+                                            .shadow(radius: 10)
+                                            .padding()
+                                        
+                                        VStack {
+                                            Text(mission.displayName)
+                                                .font(.headline)
+                                                .foregroundStyle(.white)
+                                            Text(mission.formattedLaunchDate)
+                                                .font(.caption)
+                                                .foregroundStyle(.white)
+                                        }
+                                        .padding(.vertical)
+                                        .frame(maxWidth: .infinity)
+                                        .background(.white.opacity(0.3))
+                                    }
+                            }
                             }
                             .clipShape(.rect(cornerRadius: 10))
                             .overlay {
