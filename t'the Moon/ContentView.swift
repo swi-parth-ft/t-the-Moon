@@ -24,9 +24,13 @@ struct ContentView: View {
             ZStack {
                 List {
                     ForEach(missions) { mission in
-                        NavigationLink {
-                            MissionView(mission: mission, astronauts: astronauts)
-                        } label: {
+                        
+                        NavigationLink(value: mission) {
+                            
+                       // }
+//                        NavigationLink {
+//                            MissionView(mission: mission, astronauts: astronauts)
+//                        } label: {
                             HStack {
                                 Image(mission.image)
                                     .resizable()
@@ -46,6 +50,10 @@ struct ContentView: View {
                             }
                         }
                         
+                        
+                    }
+                    .navigationDestination(for: Mission.self) { mission in
+                        MissionView(mission: mission, astronauts: astronauts)
                     }
                 }
                 .opacity(isListView ? 1 : 0)
